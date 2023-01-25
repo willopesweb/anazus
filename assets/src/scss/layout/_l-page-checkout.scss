@@ -1,0 +1,178 @@
+$layout-name: l-page-checkout;
+
+.#{$layout-name} {
+	&__alert {
+		background-color: #fff;
+		margin-bottom: $global-module-size;
+		padding: $global-module-size;
+		text-align: center;
+		width: 100%;
+
+		h1 {
+			color: var(--theme-color-2);
+			margin-bottom: $global-module-size / 2;
+		}
+
+		ul {
+			display: flex;
+			flex-direction: column;
+			gap: rem(10);
+			list-style: outside;
+			margin: 0 auto;
+			max-width: rem(600);
+			text-align: left;
+		}
+
+		&-agree {
+			align-items: center;
+			display: flex;
+			font-weight: bold;
+			gap: $global-module-size / 2;
+			justify-content: center;
+			margin-top: $global-module-size;
+
+			& input[type="checkbox"] {
+				width: fit-content;
+			}
+		}
+	}
+
+	.woocommerce {
+
+		#billing_especificacao_field {
+			.woocommerce-input-wrapper {
+				align-items: center;
+				display: grid;
+				grid-template-columns: 50px calc(100% - 50px);
+			}
+		}
+
+		.checkout {
+
+			.col-1,
+			.col-2 {
+				float: none !important;
+				width: 100% !important;
+			}
+
+			#order_review_heading {
+				margin-bottom: $global-module-size / 2;
+				margin-top: $global-module-size;
+			}
+
+			.woocommerce-billing-fields,
+			.woocommerce-shipping-fields {
+				margin-bottom: $global-module-size;
+
+				&__field-wrapper {
+					@include form-content;
+				}
+			}
+
+			.woocommerce-shipping-fields {
+
+				// Checkbox "Entregar para um endereço diferente?"
+				#ship-to-different-address {
+					width: 100%;
+
+					.woocommerce-form__label-for-checkbox {
+						align-items: center;
+						display: flex;
+						gap: rem(10);
+						justify-content: flex-start;
+
+						input {
+							width: fit-content;
+						}
+					}
+				}
+			}
+
+			// Pagamento
+			.woocommerce-checkout-payment {
+
+				// Box de termos e conduções
+				.woocommerce-terms-and-conditions-wrapper {
+					margin-bottom: $global-module-size;
+
+					a {
+						color: var(--theme-color-3);
+						font-weight: bold;
+
+						&:hover {
+							text-decoration: underline;
+						}
+					}
+				}
+			}
+		}
+
+		.woocommerce-thankyou-order-received {
+			font-size: rem(32);
+			font-weight: bold;
+			text-align: center;
+		}
+
+		.woocommerce-order-overview {
+			display: flex;
+			flex-direction: column;
+			gap: rem(10);
+			margin: $global-module-size 0 !important;
+
+			@include breakpoint(600) {
+				flex-direction: row;
+			}
+
+			&__email {
+				word-break: break-all;
+			}
+
+			&::before {
+				content: "";
+			}
+
+			li {
+				float: none !important;
+			}
+		}
+
+		.woocommerce-checkout-review-order {
+			&-table {
+				background-color: #fff;
+
+				.cart_item {
+					.product-name {
+						align-items: center;
+						display: flex;
+					}
+				}
+			}
+		}
+
+		.woocommerce-order-details {
+			&__title {
+				margin-bottom: rem(20);
+			}
+		}
+
+		.woocommerce-customer-details {
+			.woocommerce-column__title {
+				margin-bottom: rem(20);
+			}
+
+			address {
+				display: flex;
+				flex-direction: column;
+				gap: rem(5);
+				justify-content: center;
+			}
+
+			&--email,
+			&--phone {
+				align-items: center;
+				display: flex;
+				word-break: break-all;
+			}
+		}
+	}
+}

@@ -1,0 +1,136 @@
+$layout-name: l-footer;
+
+.#{$layout-name} {
+	@include container;
+	background-color: var(--theme-color-1);
+	font-family: var(--font-family-1);
+	margin-top: $global-module-size * 2;
+
+	&__content {
+		@include content("grid");
+		color: var(--text-color-1);
+		gap: $global-module-size * 2;
+		grid-template-columns: 100%;
+		grid-template-rows: auto;
+		padding: $global-module-size * 2 0;
+
+		@include breakpoint(600) {
+			gap: $global-module-size;
+			grid-template-columns: 1fr 1fr;
+		}
+		@include breakpoint(1200) {
+			grid-template-columns: 1fr 1fr 1fr;
+		}
+	}
+
+	&__title {
+		color: var(--theme-color-4);
+		font-size: rem(24);
+	}
+
+	&__subtitle {
+		color: var(--theme-color-3);
+		font-size: rem(18);
+		font-weight: bold;
+	}
+
+	&__contact {
+		display: flex;
+		flex-direction: column;
+
+		&-info {
+			align-items: center;
+			display: flex;
+			font-size: rem(18);
+			margin-top: rem(10);
+			& > a {
+				transition: var(--theme-transition);
+				&:hover {
+					color: var(--theme-color-3);
+				}
+			}
+			//icons
+			&::before {
+				font-size: rem(30);
+			}
+		}
+	}
+
+	&__menu {
+		text-align: center;
+		&-list {
+			display: flex;
+			flex-direction: column;
+			gap: rem(10);
+			margin-top: $global-module-size;
+			& .menu-item {
+				font-family: var(--font-family-1);
+				& > a {
+					transition: var(--theme-transition);
+					&:hover {
+						color: var(--theme-color-3);
+					}
+				}
+			}
+		}
+	}
+
+	&__payments {
+		text-align: center;
+		& img {
+			display: block;
+			margin: 0 auto;
+		}
+		& .l-footer__title {
+			margin-bottom: $global-module-size;
+
+			&:not(:first-child) {
+				margin-top: $global-module-size;
+			}
+		}
+	}
+
+	&__ssl {
+		display: grid;
+		font-size: rem(18);
+		font-weight: bold;
+		grid-template-columns: 20% 80%;
+		margin: 0 auto;
+		max-width: rem(250);
+		place-items: center;
+		text-transform: uppercase;
+
+		& div p {
+			position: relative;
+			z-index: 1;
+			&::before {
+				background-color: var(--theme-color-6);
+				bottom: 6px;
+				content: "";
+				display: block;
+				height: rem(5);
+				left: -10px;
+				position: absolute;
+				right: rem(-30);
+				width: calc(100% + 20px);
+				z-index: -1;
+			}
+		}
+	}
+
+	&__subfooter {
+		@include container;
+		background-color: var(--theme-color-2);
+		padding: $global-module-size 0;
+
+		&-content {
+			@include content;
+			align-items: center;
+			color: var(--text-color-2);
+			font-size: rem(14);
+			gap: rem(10);
+			justify-content: center;
+			text-align: center;
+		}
+	}
+}

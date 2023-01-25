@@ -1,0 +1,23 @@
+$component-name: c-cookiebar;
+
+.#{$component-name} {
+	@include container;
+	background-color: #333;
+	border-top: 2px solid #fff;
+	bottom: 0;
+	color: #fff;
+	font-size: rem(18);
+	padding: $global-module-size;
+	position: fixed;
+	transform: translate3d(0, 100%, 0);
+	transition: 0.25s ease-in-out;
+	z-index: z-index("modal");
+
+	&.is-active {
+		transform: translate3d(0, 0, 0);
+	}
+	&__content {
+		@include content;
+		gap: rem(10);
+	}
+}

@@ -1,0 +1,125 @@
+@mixin form-content {
+	display: grid;
+
+	@include breakpoint(700) {
+		grid-template-columns: 50% 50%;
+	}
+
+	.clear {
+		display: none;
+	}
+}
+
+@mixin form-input {
+	border: 1px solid var(--text-color-1);
+	border-radius: 0;
+	color: var(--text-color-1);
+}
+
+.woocommerce {
+	width: 100%;
+
+	h2 {
+		color: var(--theme-color-3);
+	}
+
+	.woocommerce-button,
+	.woocommerce-Button,
+	.button {
+		@include c-button;
+		@include c-button--primary;
+	}
+
+	.woocommerce-message,
+	.woocommerce-Message {
+		align-items: center;
+		border: 0 !important;
+		display: flex;
+		flex-direction: column-reverse;
+		font-size: var(--font-size-1);
+		gap: $global-module-size;
+		justify-content: center;
+		padding: $global-module-size;
+
+		&::before {
+			display: none;
+		}
+
+		& .woocommerce-Button {
+			justify-self: self-start;
+		}
+	}
+
+	.form-row {
+		float: none !important;
+		margin: 0 0 6px;
+		padding: 3px;
+		width: 100% !important;
+
+		&:has(.woocommerce-form-login__submit) {
+			align-items: center;
+			display: flex;
+			gap: $global-module-size;
+
+			.woocommerce-button {
+				order: 0;
+			}
+		}
+
+		em {
+			font-size: rem(14);
+		}
+
+		input {
+			@include form-input;
+		}
+
+		.select2-container {
+			width: 100% !important;
+
+			.select2-selection--single {
+				align-items: center;
+				border-color: var(--text-color-1);
+				border-radius: 0;
+				color: var(--text-color-1);
+				display: flex !important;
+				height: rem(38) !important;
+				width: 100%;
+			}
+		}
+
+		button {
+			@include c-button;
+			@include c-button--primary;
+			margin-top: $global-module-size;
+		}
+	}
+
+	.woocommerce-error {
+		background-color: var(--theme-color-2);
+		border: 0;
+		color: var(--text-color-2);
+		display: flex;
+		flex-direction: column;
+		font-size: var(--font-size-1);
+		margin-bottom: $global-module-size;
+		padding: $global-module-size;
+		row-gap: $global-module-size / 2;
+
+		&::before {
+			color: var(--text-color-2);
+		}
+	}
+
+	.woocommerce-form {
+		&__input-checkbox {
+			width: auto !important;
+		}
+	}
+
+	// Usado em Minha Conta-> Pedidos -> Detalhes do Pedido
+	mark {
+		background-color: var(--theme-color-3);
+		color: var(--text-color-2);
+	}
+}

@@ -1,0 +1,23 @@
+$layout-name: l-products-archive;
+
+.#{$layout-name} {
+	@include container;
+	background-color: #fff;
+
+	&__content {
+		@include content;
+	}
+
+	& .woocommerce-ordering {
+		margin-top: $global-module-size;
+	}
+
+	&__notfound {
+		background-color: var(--theme-color-2);
+		color: var(--text-color-2);
+		margin-bottom: $global-module-size;
+		padding: $global-module-size;
+		text-align: center;
+		width: 100%;
+	}
+}

@@ -1,0 +1,10 @@
+$layout-name: l-page-home;
+
+.#{$layout-name} {
+	&__carrousel {
+		margin-bottom: $global-module-size * 3;
+		margin-top: $global-module-size * 2;
+	}
+
+	//&__products {}
+}

@@ -1,0 +1,23 @@
+$component-name: c-breadcrumb;
+
+.#{$component-name} {
+	--breadcrumb-font-family: var(--font-family-1);
+	--breadcrumb-link-color-hover: var(--theme-color-5);
+
+	@include content;
+	padding: $global-module-size 0;
+
+	& .woocommerce-breadcrumb {
+		font-family: var(--font-family-1);
+		font-size: rem(18);
+		transition: 0.15s linear;
+
+		& a {
+			text-decoration: underline;
+			&:hover,
+			&:focus {
+				color: var(--breadcrumb-link-color-hover);
+			}
+		}
+	}
+}

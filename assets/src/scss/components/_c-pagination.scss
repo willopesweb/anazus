@@ -1,0 +1,35 @@
+$component-name: pagination;
+
+.#{$component-name} {
+	align-items: center;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin: $global-module-size 0;
+	padding: $global-module-size 0;
+	width: 100%;
+
+	& .page-numbers {
+		background-color: var(--theme-color-3);
+		border: 2px solid var(--theme-color-3);
+		color: var(--text-color-2);
+		font-family: var(--font-family-1);
+		font-size: rem(18);
+		padding: rem(8) rem(13);
+		text-transform: uppercase;
+		transition: 300ms ease all;
+
+		&.current {
+			background-color: var(--theme-color-4);
+			border-color: var(--theme-color-3);
+		}
+		&:focus,
+		&:active {
+			outline: 2px solid var(--theme-color-2);
+		}
+		&:not(.current):hover {
+			background-color: lighten($theme-color-3, 8%);
+		}
+	}
+}

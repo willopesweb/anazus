@@ -1,0 +1,27 @@
+$layout-name: l-page-products;
+
+.#{$layout-name} {
+	background-color: #fff;
+	&__content {
+		@include content("grid");
+		grid-gap: $global-module-size;
+		margin-top: rem(50);
+		padding-bottom: $global-module-size * 4;
+		position: relative;
+
+		@include breakpoint(600) {
+			grid-gap: 0;
+			grid-template-columns: 1fr 1fr;
+		}
+		@include breakpoint(900) {
+			grid-template-columns: 1fr 1fr 1fr;
+			margin-top: rem(50);
+		}
+	}
+
+	&__text {
+		@include content;
+		gap: $global-module-size;
+		padding-top: $global-module-size * 3;
+	}
+}

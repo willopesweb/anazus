@@ -1,0 +1,276 @@
+$layout-name: l-page-product;
+
+.#{$layout-name} {
+	@include container;
+	background-color: #ccc;
+
+	&__content {
+		@include content("grid");
+		gap: $global-module-size;
+		grid-template-areas:
+			"header"
+			"gallery"
+			"info";
+		grid-template-rows: auto auto auto;
+		margin-top: $global-module-size;
+
+		@include breakpoint(800) {
+			gap: 0;
+			grid-template-areas:
+				"gallery header"
+				"gallery info";
+			grid-template-columns: 1fr 1fr;
+			grid-template-rows: 100px auto;
+			grid-template-rows: minmax(40px, 80px) rem(500);
+		}
+	}
+
+	&__notifications {
+		@include content;
+
+		& .woocommerce-message {
+			border-top-color: var(--theme-color-6);
+			margin: 0 auto;
+			width: 100%;
+
+			&::before {
+				color: var(--theme-color-6);
+			}
+		}
+	}
+
+	&__header {
+		grid-area: header;
+		text-align: center;
+
+		@include breakpoint(800) {
+			align-items: center;
+			display: flex;
+			padding: 0 $global-module-size;
+			text-align: left;
+		}
+	}
+
+	&__gallery {
+		display: grid;
+		gap: rem(10);
+		grid-area: gallery;
+		grid-template-areas:
+			"main"
+			"list";
+
+		@include breakpoint(800) {
+			padding-right: rem(20);
+			//Espaço adicional para alinhar com o título do produto
+			padding-top: rem(25);
+		}
+
+		@include breakpoint(1200) {
+			grid-template-areas: "list main";
+			grid-template-columns: 100px calc(100% - 100px);
+		}
+
+		&-main {
+			background-position: 50% 50%;
+			background-repeat: no-repeat;
+			background-size: cover;
+			cursor: zoom-in;
+			grid-area: main;
+			height: rem(400);
+			overflow: hidden;
+			position: relative;
+
+			@include breakpoint(1200) {
+				height: auto;
+			}
+
+			>figure {
+				height: 100%;
+			}
+
+			img {
+				display: block;
+				height: 100%;
+				object-fit: cover;
+				overflow: hidden;
+				transition: opacity 0.5s;
+				width: 100%;
+
+				&:hover {
+					opacity: 0;
+				}
+			}
+		}
+
+		&-list {
+			display: grid;
+			gap: rem(5);
+			grid-template-columns: repeat(6, 1fr);
+			grid-template-rows: 80px;
+
+			@include breakpoint(1200) {
+				display: flex;
+				flex-direction: column;
+				flex-wrap: nowrap;
+				gap: rem(3);
+				max-height: 100%;
+				overflow-x: auto;
+			}
+
+			& img {
+				height: 100%;
+				object-fit: cover;
+				width: 100%;
+			}
+		}
+
+		&-item {
+			cursor: pointer;
+			//flex-basis: calc(100% / 4);
+			height: rem(80);
+			transition: var(--theme-transition);
+
+			&:hover {
+				border-color: var(--theme-color-4);
+			}
+
+			@include breakpoint(600) {
+				//flex-basis: calc(100% / 5);
+			}
+
+			@include breakpoint(1200) {
+				width: 100%;
+			}
+		}
+	}
+
+	&__info {
+		align-items: flex-start;
+		display: flex;
+		flex-direction: column;
+		gap: $global-module-size;
+		grid-area: info;
+		justify-content: flex-start;
+
+		@include breakpoint(800) {
+			padding-left: $global-module-size;
+		}
+	}
+
+	&__totals {
+		font-size: rem(24);
+		width: 100%;
+
+		&-quantity {
+			font-size: rem(18);
+
+			span {
+				color: var(--theme-color-4);
+				font-weight: bold;
+			}
+		}
+
+		&-value {
+			font-size: rem(32);
+
+			span {
+				color: var(--theme-color-4);
+				font-weight: bold;
+			}
+		}
+	}
+
+	&__price {
+		display: flex;
+		flex-direction: column;
+		padding: $global-module-size 0;
+		width: 100%;
+
+		ins {
+			text-decoration: none;
+		}
+
+		.woocommerce-Price-amount {
+			bdi {
+				color: var(--theme-color-4);
+				font-family: var(--font-family-1);
+				font-size: rem(48);
+				font-weight: 800;
+				padding: $global-module-size 0;
+				text-decoration: none !important;
+
+				.woocommerce-Price-currencySymbol {
+					font-size: rem(20);
+					padding-right: rem(10);
+					position: relative;
+					text-align: center;
+
+					&::before {
+						bottom: 22px;
+						content: "Por";
+						display: flex;
+						font-size: rem(15);
+						font-weight: normal;
+						position: absolute;
+						text-transform: uppercase;
+					}
+				}
+			}
+		}
+
+		del {
+			.woocommerce-Price-amount {
+				bdi {
+					color: var(--theme-color-2);
+					font-size: rem(20);
+
+					.woocommerce-Price-currencySymbol {
+						padding-right: rem(5);
+
+						&::before {
+							content: "De";
+							display: inline-flex;
+							font-size: rem(20);
+							margin-right: rem(5);
+							position: initial;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	&__description {
+		@include content;
+		padding: $global-module-size * 2 0;
+
+		&-content {
+			font-size: rem(18);
+			line-height: rem(24);
+			padding-top: $global-module-size;
+
+			& ul {
+				list-style-position: inside;
+				list-style-type: circle;
+			}
+		}
+	}
+
+	&__relateds {
+		@include container;
+		padding: $global-module-size;
+
+		& .l-page__title {
+			padding: $global-module-size * 2 0 $global-module-size;
+			width: 100%;
+
+			&::after {
+				bottom: rem(10);
+			}
+		}
+	}
+
+	&__relateds-content {
+		@include content;
+	}
+}

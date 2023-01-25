@@ -1,0 +1,29 @@
+$component-name: c-social;
+
+.#{$component-name} {
+	align-items: center;
+	display: flex;
+	flex-direction: row;
+
+	& a {
+		color: inherit;
+		font-size: rem(24);
+		transition: var(--theme-transition);
+		&.icon-instagram:hover {
+			color: social-media-color("instagram");
+		}
+		&.icon-facebook:hover {
+			color: social-media-color("facebook");
+		}
+
+		/* &.icon-youtube:hover {
+			color: social-media-color("youtube");
+		}
+		&.icon-linkedin:hover {
+			color: social-media-color("linkedin");
+		} */
+		&.icon-whatsapp:hover {
+			color: social-media-color("whatsapp");
+		}
+	}
+}

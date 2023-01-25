@@ -1,0 +1,171 @@
+$component-name: c-nav;
+$mobile-nav: 1200px;
+
+@media (max-width: $mobile-nav) {
+	body.is-menu-open {
+		& .#{$component-name}__close {
+			opacity: 1;
+			visibility: visible;
+		}
+	}
+}
+
+.#{$component-name} {
+	display: flex;
+
+	&__link,
+	& .menu-item > a/**Wordpress**/ {
+		color: var(--text-color-1);
+		font-family: var(--font-family-1);
+		padding: rem(20);
+		text-align: center;
+		text-transform: uppercase;
+
+		&.current-menu-item {
+			&::before {
+				color: var(--theme-color-2);
+				content: "\25BA";
+			}
+		}
+	}
+
+	// Navegação Mobile
+	@media (max-width: $mobile-nav) {
+		align-items: flex-start;
+		background-color: rgba(70, 50, 62, 0.9); //var(--theme-color-2);
+		display: flex;
+		height: calc(100% + 100px);
+		justify-content: center;
+		left: 0;
+		opacity: 0;
+		padding: $global-module-size 0;
+		position: fixed;
+		top: rem(-100);
+		transition: 0.45s;
+		visibility: hidden;
+		width: 100%;
+		z-index: z-index("modal");
+
+		&.is-toogled {
+			opacity: 1;
+			top: 0;
+			visibility: visible;
+		}
+
+		&__close {
+			color: var(--text-color-2);
+			cursor: pointer;
+			font-family: var(--font-family-1);
+			font-size: rem(32);
+			opacity: 0;
+			position: absolute;
+			right: 0;
+			top: rem(40);
+			transition: all 400ms ease-in-out;
+			visibility: hidden;
+			z-index: z-index("modal") + 1;
+
+			&:hover {
+				transform: rotate(180deg);
+			}
+		}
+
+		&__menu {
+			align-items: center;
+			display: flex;
+			flex-direction: column;
+			gap: $global-module-size;
+			height: 80vh;
+			justify-content: center;
+			margin: 0 5%;
+			max-width: rem(800);
+			position: relative;
+			width: 90%;
+
+			& .menu-item {
+				& > a {
+					color: var(--text-color-2);
+					font-family: var(--font-family-1);
+					font-size: rem(28);
+					font-weight: 400;
+				}
+			}
+		}
+	}
+
+	//Navegação Desktop
+	@media (min-width: $mobile-nav) {
+		&__close {
+			display: none;
+		}
+
+		&__menu {
+			align-items: center;
+			display: flex;
+			justify-content: center;
+			width: 100%;
+		}
+
+		/** &__item,**/
+		& .menu-item /**Wordpress**/ {
+			font-size: rem(14);
+			padding: rem(10) 0;
+			position: relative;
+
+			&.mobile-only {
+				display: none !important;
+			}
+
+			& a {
+				transition: $theme-default-transition;
+				&:hover {
+					color: var(--theme-color-3);
+				}
+			}
+		}
+
+		// Dropdown
+		& .menu-item-has-children {
+			position: relative;
+			&:hover {
+				& .sub-menu {
+					//.#{$component-name}__expand-content {
+					opacity: 1;
+					visibility: visible;
+				}
+			}
+		}
+		& .sub-menu {
+			//__expand-content {
+			background-color: var(--theme-color-1);
+			display: flex;
+			flex-direction: column;
+			opacity: 0;
+			position: absolute;
+			top: rem(40);
+			transition: all 0.15s ease-in;
+			visibility: hidden;
+			width: rem(200);
+
+			&:hover {
+				opacity: 1;
+				visibility: visible;
+			}
+			& .menu-item {
+				//.#{$component-name}__item {
+				display: block;
+				width: 100%;
+
+				&:first-child {
+					// Back Link do menu mobile
+					display: none;
+				}
+			}
+			& > a {
+				text-align: left;
+				//.#{$component-name}__link {
+				width: 100%;
+			}
+		}
+	}
+}

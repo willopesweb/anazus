@@ -1,0 +1,32 @@
+$component-name: c-tooltip;
+
+$tooltip-bg-color: $theme-color-1;
+$tooltip-font-color: $text-color-2;
+
+/*Example:*/
+
+/*<p class='c-tooltip' data-tooltip='Text that will be displayed in tooltip baloon'><span class='icon-info'>This is a text</span></p>*/
+
+.#{$component-name} {
+	position: relative;
+	&::before {
+		background-color: $tooltip-bg-color;
+		border-radius: $global-border-radius;
+		bottom: 50%;
+		color: $tooltip-font-color;
+		content: attr(data-tooltip);
+		display: inline-block;
+		max-width: 50%; /* avoids very long sentences */
+		opacity: 0;
+		overflow: hidden;
+		padding: rem(5);
+		pointer-events: none; /* prevents tooltip from firing on pseudo hover */
+		position: absolute;
+		transition: 0.3s;
+		word-wrap: break-word;
+	}
+	&:hover::before {
+		bottom: 100%;
+		opacity: 1;
+	}
+}

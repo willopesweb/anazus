@@ -1,0 +1,95 @@
+$layout-name: l-page-cart;
+
+// Adiciona um espaçamento no simbolo de R$
+.woocommerce-Price-currencySymbol {
+	padding-right: rem(3);
+}
+
+//Tabela Resumo do Pedido (Presente em Cart e Checkout)
+.shop_table {
+	// Frete
+	.woocommerce-shipping-totals {
+		// Opções de Frete
+		.woocommerce-shipping-methods li {
+			align-items: center;
+			display: flex;
+			gap: rem(10);
+			justify-content: flex-start;
+			input {
+				width: fit-content;
+			}
+		}
+	}
+}
+
+.#{$layout-name} {
+	& .woocommerce {
+		width: 100%;
+
+		& .woocommerce-cart-form {
+			&__contents {
+				& tbody,
+				& thead {
+					width: 100% !important;
+					& tr {
+						@include breakpoint(769) {
+							align-items: center;
+							border-top: 1px solid rgba(0, 0, 0, 0.1);
+							display: grid;
+							grid-template-columns: 50px 80px 2fr 1fr 1fr 1fr;
+							text-align: center;
+
+							& td {
+								align-items: center;
+								border: none !important;
+								display: flex;
+								justify-content: center;
+								padding: 0;
+
+								& img {
+									padding-top: rem(7);
+									width: 100% !important;
+								}
+							}
+						}
+
+						& .actions {
+							align-items: center;
+							display: flex;
+							grid-column: 1 / 7;
+							justify-content: flex-end;
+							padding: $global-module-size / 2;
+
+							& .button {
+								@include c-button;
+								@include c-button--secondary;
+							}
+						}
+					}
+				}
+			}
+
+			&__cart-item {
+				& .product-remove a {
+					transition: 0.15s linear;
+				}
+			}
+		}
+
+		// Botão Concluir Compra
+		& .wc-proceed-to-checkout {
+			& .checkout-button {
+				transition: 0.15s linear;
+				@include c-button--primary;
+			}
+		}
+
+		& .return-to-shop {
+			& .button {
+				@include c-button;
+				@include c-button--secondary;
+			}
+			margin-bottom: $global-module-size * 2;
+		}
+	}
+}

@@ -1,0 +1,59 @@
+$component-name: c-button;
+
+@mixin c-button {
+	--button-font-family: var(--font-family-1);
+	--button-font-size: var(--font-size-1);
+
+	-webkit-appearance: none !important;
+
+	border: none;
+	border-radius: rem(20);
+	cursor: pointer;
+	font-family: var(--button-font-family);
+	font-size: var(--button-font-size);
+	font-weight: 600;
+	outline: 0;
+	padding: rem(15);
+	text-align: center;
+	text-transform: uppercase;
+	transition: 300ms ease all;
+	width: fit-content;
+	&:focus,
+	&:active {
+		border: none;
+		box-shadow: none;
+		outline: 2px solid var(--theme-color-2);
+	}
+}
+
+@mixin c-button--primary() {
+	background-color: var(--theme-color-4) !important;
+	color: var(--text-color-2) !important;
+	&:hover {
+		background-color: var(--theme-color-5) !important;
+	}
+}
+
+@mixin c-button--secondary() {
+	background-color: var(--theme-color-2) !important;
+	color: var(--text-color-2) !important;
+	&:hover {
+		background-color: var(--theme-color-4) !important;
+	}
+}
+
+.#{$component-name} {
+	@include c-button;
+}
+
+.#{$component-name}--primary {
+	@include c-button--primary;
+}
+
+.#{$component-name}--secondary {
+	background-color: var(--theme-color-1);
+	color: var(--theme-color-4);
+	&:hover {
+		//background-color: lighten($theme-color-1, 10%);
+	}
+}

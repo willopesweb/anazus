@@ -1,0 +1,37 @@
+$layout-name: l-page-about;
+
+.#{$layout-name} {
+	@include container;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	padding: $global-module-size * 4 0;
+
+	&__content {
+		@include content;
+		align-items: center;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	&__image {
+		border-radius: 50%;
+		margin-bottom: $global-module-size;
+		position: relative;
+	}
+
+	&__text {
+		color: var(--text-color-1);
+		font-family: var(--font-family-1);
+		font-size: var(--font-size-1);
+		line-height: var(--font-size-3);
+		margin-top: $global-module-size * 2;
+		max-width: rem(900);
+		text-align: center;
+
+		@include breakpoint(500) {
+			font-size: var(--font-size-2);
+			line-height: var(--font-size-3);
+		}
+	}
+}

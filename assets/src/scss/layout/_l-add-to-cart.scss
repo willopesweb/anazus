@@ -1,0 +1,140 @@
+$layout-name: cart;
+
+.#{$layout-name} {
+	align-items: flex-start;
+	display: flex;
+	flex-direction: column;
+	gap: rem(10);
+	width: 100%;
+
+	//Cálculo de Frete
+	& #cfpp {
+		display: flex !important;
+		flex-direction: column;
+		gap: rem(10);
+		margin-top: 0;
+		width: 100%;
+
+		& .calculo-de-frete {
+			align-items: center;
+			display: flex;
+			flex-direction: column;
+			gap: rem(10);
+			max-width: rem(500);
+
+			input {
+				width: 100%;
+				@include breakpoint(400) {
+					width: rem(200);
+				}
+			}
+
+			@include breakpoint(400) {
+				flex-direction: row;
+			}
+
+			//Botão
+			& #calcular-frete {
+				align-items: center;
+				display: flex !important;
+				font-family: var(--font-family-1);
+				font-weight: 700;
+				justify-content: center;
+				line-height: rem(20);
+				margin: 0;
+				text-transform: uppercase;
+				transition: var(--theme-transition);
+				width: 100%;
+				@include c-button--secondary;
+
+				@include breakpoint(400) {
+					width: rem(200);
+				}
+			}
+
+			& #calcular-frete-loader {
+				border: 8px solid var(--theme-color-2);
+				border-top: 8px solid var(--theme-color-4);
+			}
+		}
+
+		& .resultado-frete {
+			margin: 0;
+			& table {
+				border: 2px solid var(--theme-color-2);
+				text-align: center;
+				width: 100%;
+
+				& thead {
+					background-color: var(--theme-color-2);
+					color: var(--text-color-2);
+				}
+
+				& tbody {
+					& td {
+						& .woocommerce-Price-currencySymbol {
+							margin-right: rem(5);
+						}
+					}
+				}
+			}
+		}
+	}
+
+	&__quantity {
+		display: flex;
+
+		& input.input-text {
+			-moz-appearance: textfield;
+			border-color: rgba(0, 0, 0, 0.3);
+			border-left: 0;
+			border-right: 0;
+			font-size: rem(18);
+			height: 100%;
+			max-width: rem(80);
+			text-align: center;
+
+			&::-webkit-outer-spin-button,
+			&::-webkit-inner-spin-button {
+				-webkit-appearance: none;
+				margin: 0;
+			}
+
+		}
+
+		&-control {
+			align-items: center;
+			background-color: #fff;
+			border-color: rgba(0, 0, 0, 0.3);
+			border-style: solid;
+			border-width: 2px;
+			cursor: pointer;
+			display: flex;
+			font-size: rem(24);
+			height: var(--input-height);
+			justify-content: center;
+			padding: 0 rem(15);
+			transition: 0.15s linear;
+
+			&:hover {
+				background-color: var(--theme-color-3);
+				color: var(--text-color-2);
+			}
+
+			&--plus {
+				border-radius: 0.5rem 0 0 0.5rem;
+				border-right: 0;
+			}
+
+			&--minus {
+				border-left: 0;
+				border-radius: 0 0.5rem 0.5rem 0;
+			}
+		}
+	}
+
+	& button.single_add_to_cart_button {
+		@include c-button;
+		@include c-button--primary;
+	}
+}

@@ -1,0 +1,27 @@
+$component-name: c-products-list;
+
+.#{$component-name} {
+	display: grid;
+	gap: $global-module-size;
+	grid-template-columns: 100%;
+	margin: $global-module-size 0;
+	place-items: flex-start;
+	width: 100%;
+
+	@include breakpoint(500) {
+		grid-template-columns: 1fr 1fr;
+	}
+
+	@include breakpoint(800) {
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+
+	@include breakpoint(1000) {
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+	}
+
+	li {
+		height: 100%;
+		width: 100%;
+	}
+}
