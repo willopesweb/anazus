@@ -48,4 +48,4 @@ jobs:
           RSYNC_FLAGS: "" #--dry-run
           EXCLUDES: bin/rsync-excludes.txt
           SSH_HOST: hostinger
-          DESTINATION: "~/domains/atelieanazus.com.br/public_html/wp-content/themes/regiane"
+          DESTINATION: "~/domains/atelieanazus.com.br/public_html/wp-content/themes/anazus"
