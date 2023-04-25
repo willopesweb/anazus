@@ -48,7 +48,7 @@ endif;
       <h2 class="l-footer__title">Mapa do Site</h2>
       <?php
       wp_nav_menu([
-        'menu' => 'Menu Header',
+        'menu' => 'Menu Rodapé',
         'menu_class'   => 'l-footer__menu-list',
       ]);
       ?>
